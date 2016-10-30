@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-html-shader/master/dist/aframe-html-shader.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene auto-enter-vr>
 
-<head>
-  <title>KAD</title>
-</head>
+
+      <a-entity>
+          <a-entity camera look-controls wasd-controls>
+              <a-entity position="0 0 -3" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.20; radiusInner: 0.13;" material="color: #ADD8E6; shader: flat" cursor="maxDistance: 30; fuse: true">
+                  <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+                  <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+              </a-entity>
+          </a-entity>
+        </a-entity>
+
+        <a-asset>
+          <img id="sanitation" src="res/sanitation.png"/>
+        </a-asset>
+
+        <a-entity position="-4 0 -4">
+            <a-plane height="2" width="2" color: "#6173F4;"></a-plane>
+            <a-circle id="vr" radius="0.9" color:"000" src="#sanitation"></a-circle>
+          <a-entity position="-0.2 -1 1" bmfont-text="text: Sanitation; color:#fff;"></a-entity>
+        </a-entity>
 
 
-<body>
-    <header>
-      <h1>Welcome to KAD site</h1>
-    </header>
-    <p>Thanks for visiting our site!</p>
-</body>
+        <a-entity position="0 0 -4" bmfont-text="text: Hello World; color:#fff;"></a-entity>
+      <!--
+        <a-entity position="0 -1 -5">
+        <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="15000"
+                     easing="linear" repeat="indefinite"></a-animation>
 
+        <a-cylinder height="2" src="img-1.jpg" width="3"
+                    rotation="0 -20 0" scale="1 1.5 1"></a-cylinder>
+
+        <a-obj-model src="ob.obj" scale=".03 .03 .03"></a-obj-model>
+
+        </a-entity>
+      !-->
+
+
+    <a-sky color="#333333"></a-sky>
+
+    </a-scene>
+
+
+    <!--script!--->
+    <script>
+            AFRAME.registerComponent('auto-enter-vr', {
+             init: function () {
+              this.el.sceneEl.enterVR();
+             }
+            });
+
+            document.querySelector("#vr").addEventListener('click', function() {
+                window.location.href = "page1.html";
+            });
+        </script>
+
+
+
+  </body>
 </html>
