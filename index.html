@@ -7,7 +7,7 @@
     <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
   </head>
   <body>
-    <a-scene auto-enter-vr>
+    <a-scene>
 
 
       <a-entity>
@@ -23,14 +23,16 @@
           <img id="sanitation" src="res/sanitation.png"/>
         </a-asset>
 
-        <a-entity position="-4 0 -4">
-            <a-plane height="2" width="2" color: "#6173F4;"></a-plane>
-            <a-circle id="vr" radius="0.9" color:"000" src="#sanitation"></a-circle>
-          <a-entity position="-0.2 -1 1" bmfont-text="text: Sanitation; color:#fff;"></a-entity>
+        <a-entity id="sntn" position="-4 0 -4">
+            <a-plane height="2.5" width="2" color: "#6173F4;"></a-plane>
+            <a-circle radius="0.9" color:"000" src="#sanitation" position="0 1 0"></a-circle>
+            <a-entity position="0.5 -0.5 1" bmfont-text="text: Sanitation; color:#999;"></a-entity>
         </a-entity>
 
 
-        <a-entity position="0 0 -4" bmfont-text="text: Hello World; color:#fff;"></a-entity>
+        <a-entity position="0 0 -2" bmfont-text="text: Welcome to KADteam!; color:#fff;"></a-entity>
+        <a-entity position="0 -0.4 -3.5" bmfont-text="text: It's a Virtual Reality Project to solve smart city problem; color:#fff;"></a-entity>
+        <a-entity position="0 -0.6 -3" bmfont-text="text: Team member: Salman, Khalid and Asif; color:#fff;"></a-entity>
       <!--
         <a-entity position="0 -1 -5">
         <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="15000"
@@ -58,7 +60,7 @@
              }
             });
 
-            document.querySelector("#vr").addEventListener('click', function() {
+            document.querySelector("#sntn").addEventListener('click', function() {
                 window.location.href = "page1.html";
             });
         </script>
