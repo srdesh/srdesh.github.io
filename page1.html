@@ -22,31 +22,61 @@
 
       <!--back!-->
       <a-entity id="back">
-        <a-circle id="backCircle" radius="0.3" color="#999" position="0 -2.0 -3"></a-circle>
+        <a-plane id="backCircle" height="0.5" width="1" color="#000" position="0 -2.0 -3"></a-plane>
         <a-entity bmfont-text="text:back; color:#fff" scale="1 1 1" position="-0.20 -2.05 -3"></a-entity>
       </a-entity>
 
-      <!--heart!-->
+      <!--view!-->
       <a-entity>
         <a-entity position="-2.50 0 -5.00">
+          <!--rotating animation!-->
           <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="15000"
                      easing="linear" repeat="indefinite"></a-animation>
-          <a-obj-model src="res/heart.obj" color="#ED3333" scale=".03 .03 .03" opacity="0.9"></a-obj-model>
+          <!--moon poroperties!-->
+          <a-entity>
+            <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="20000"
+                       easing="linear" repeat="indefinite"></a-animation>
+            <a-sphere id="moon" radius="0.5" src="res/moon.jpg" position="-1.50 0 -1.00"></a-sphere>S
+          </a-entity>
+          <!--earth properties!-->
+          <a-sphere id="earth" radius="1" src="res/earth.jpg"></a-sphere>
           </a-entity>
 
+        <!--earth text!-->
+        <a-entity id="earthText">
+          <a-entity position="1 1.5 -5" bmfont-text="text: Earth; color:#fff;" scale="3 3 3"></a-entity>
+          <a-entity position="1 -1.0 -5"
+          bmfont-text="text: Earth (otherwise known as the world, in Greek: Γαῖα Gaia, or in Latin: Terra) is the third planet from the Sun, the densest planet in the Solar System.
 
-      <a-entity position="1 1.5 -5" bmfont-text="text: Human Heart; color:#cc0000;" scale="3 3 3"></a-entity>
-        <a-entity position="1 -1.0 -5"
-        bmfont-text="text: The heart is a muscular organ in humans and other animals which pumps blood through the blood vessels of the circulatory system.
-                Blood provides the body with oxygen and nutrients, as well as assists in the removal of metabolic wastes. The heart is located in the middle compartment of the chest.;
-                color:#333;" scale="1.2 1.2 1.2"></a-entity>
+                      Radius: 3,959 mi
+                      Age: 4.543 billion years
+                      Mass: 5.972 × 10^24 kg
+                      Distance from Sun: 92.96 million mi
+                      Gravity: 9.807 m/s²
+                      Area: 196.9 million mi²;
+                  color:#fff;" scale="1.2 1.2 1.2"></a-entity>
+        </a-entity>
+        <!--moon text!-->
+        <a-entity id="moonText" visible="false">
+          <a-entity position="1 1.5 -5" bmfont-text="text: Moon; color:#fff;" scale="3 3 3"></a-entity>
+          <a-entity position="1 -1.0 -5"
+          bmfont-text="text: The Moon is Earth's only permanent natural satellite. It is the fifth-largest natural satellite in the Solar System.
 
+                      Radius: 1,079 mi
+                      Age: 4.53 billion years
+                      Orbital period: 27 days
+                      Gravity: 1.622 m/s²
+                      Distance to Earth: 238,900 mi
+                      Orbits: Earth;
+                  color:#fff;" scale="1.2 1.2 1.2"></a-entity>
+        </a-entity>
+        <!--view entity end!-->
      </a-entity>
 
 
 
 
-    <a-sky color="#fff"></a-sky>
+    <a-sky src="res/milkyway.jpg"></a-sky>
 
     </a-scene>
 
@@ -59,6 +89,16 @@
 
             document.querySelector("#back").addEventListener('click', function() {
                 window.location.href = "index.html";
+            });
+
+            document.querySelector("#moon").addEventListener('click', function() {
+                document.querySelector("#earthText").setAttribute('visible', false);
+                document.querySelector("#moonText").setAttribute('visible', true);
+            });
+
+            document.querySelector("#earth").addEventListener('click', function() {
+                document.querySelector("#earthText").setAttribute('visible', true);
+                document.querySelector("#moonText").setAttribute('visible', false);
             });
         </script>
 
