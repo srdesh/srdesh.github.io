@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="js/bmfont.min.js"></script>
+  </head>
+  <body>
+    <a-scene position="2.0 1.00 1.00" auto-enter-vr>
+
+      <a-entity>
+          <a-entity camera look-controls wsad-controls>
+              <!--trigger!-->
+              <a-entity position="0 0 -3" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.20; radiusInner: 0.13;" material="color: #ADD8E6; shader: flat" cursor="maxDistance: 30; fuse: true">
+                  <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+                  <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+              </a-entity>
+            <!--fixed entity close!-->
+          </a-entity>
+      </a-entity>
+
+      <!--back!-->
+      <a-entity id="back" position="0 0.5 -1" rotation="0 -25 0">
+        <a-plane id="backCircle" height="0.5" width="1" color="#000" position="0 -2.0 -3" ></a-plane>
+        <a-entity bmfont-text="text:back; color:#fff" scale="1 1 1" position="-0.20 -2.05 -3"></a-entity>
+      </a-entity>
+
+      <!--view!-->
+      <a-entity>
+        <a-entity position="-2.50 0 -5.00">
+          <!--rotating animation!-->
+          <a-entity>
+          <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="15000"
+                     easing="linear" repeat="indefinite"></a-animation>
+
+          <!--earth properties!-->
+          <a-sphere id="saturn" radius="1" src="res/saturn.jpg"></a-sphere>
+          </a-entity>
+
+          <a-ring  radius-inner="1.5" radius-outer="2" material="side:double" rotation="-75 0 0" src="res/saturn.jpg"></a-ring>
+
+        </a-entity>
+
+
+        <!--saturn text!-->
+
+        <a-entity id="saturnText" visible="true">
+          <a-entity position="1 1.5 -5" rotation="0 -25 0" bmfont-text="text: Saturn; color:#fff;" scale="3 3 3"></a-entity>
+          <a-entity position="1 -1.0 -5" rotation="0 -25 0"
+          bmfont-text="text: Earth (otherwise known as the world, in Greek: Γαῖα Gaia, or in Latin: Terra) is the third planet from the Sun, the densest planet in the Solar System.
+
+                      Radius: 3,959 mi
+                      Age: 4.543 billion years
+                      Mass: 5.972 × 10^24 kg
+                      Distance from Sun: 92.96 million mi
+                      Gravity: 9.807 m/s²
+                      Area: 196.9 million mi²;
+                  color:#fff;" scale="1.2 1.2 1.2"></a-entity>
+        </a-entity>
+
+        <!--view entity end!-->
+     </a-entity>
+
+
+
+
+    <a-sky src="res/milkyway.jpg"></a-sky>
+
+    </a-scene>
+
+    <script>
+            AFRAME.registerComponent('auto-enter-vr', {
+             init: function () {
+              this.el.sceneEl.enterVR();
+             }
+            });
+
+            document.querySelector("#back").addEventListener('click', function() {
+                window.location.href = "page1.html";
+            });
+
+
+        </script>
+
+  </body>
+</html>
