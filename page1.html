@@ -10,7 +10,7 @@
     <a-scene position="2.0 1.00 1.00">
 
       <a-entity>
-          <a-entity camera look-controls>
+          <a-entity camera look-controls wsad-controls>
               <!--trigger!-->
               <a-entity position="0 0 -3" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.20; radiusInner: 0.13;" material="color: #ADD8E6; shader: flat" cursor="maxDistance: 30; fuse: true">
                   <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
@@ -21,8 +21,8 @@
       </a-entity>
 
       <!--back!-->
-      <a-entity id="back">
-        <a-plane id="backCircle" height="0.5" width="1" color="#000" position="0 -2.0 -3"></a-plane>
+      <a-entity id="back" position="2 0.5 -1" rotation="0 -25 0">
+        <a-plane id="backCircle" height="0.5" width="1" color="#000" position="0 -2.0 -3" ></a-plane>
         <a-entity bmfont-text="text:back; color:#fff" scale="1 1 1" position="-0.20 -2.05 -3"></a-entity>
       </a-entity>
 
@@ -36,7 +36,12 @@
           <a-entity>
             <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="20000"
                        easing="linear" repeat="indefinite"></a-animation>
-            <a-sphere id="moon" radius="0.5" src="res/moon.jpg" position="-1.50 0 -1.00"></a-sphere>S
+             <a-entity position="-1.50 0 -1.00">
+               <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="2000"
+                          easing="linear" repeat="indefinite"></a-animation>
+                <a-sphere id="moon" radius="0.5" src="res/moon.jpg"></a-sphere>
+             </a-entity>
+
           </a-entity>
           <!--earth properties!-->
           <a-sphere id="earth" radius="1" src="res/earth.jpg"></a-sphere>
@@ -44,8 +49,8 @@
 
         <!--earth text!-->
         <a-entity id="earthText">
-          <a-entity position="1 1.5 -5" bmfont-text="text: Earth; color:#fff;" scale="3 3 3"></a-entity>
-          <a-entity position="1 -1.0 -5"
+          <a-entity position="1 1.5 -5" rotation="0 -25 0" bmfont-text="text: Earth; color:#fff;" scale="3 3 3"></a-entity>
+          <a-entity position="1 -1.0 -5" rotation="0 -25 0"
           bmfont-text="text: Earth (otherwise known as the world, in Greek: Γαῖα Gaia, or in Latin: Terra) is the third planet from the Sun, the densest planet in the Solar System.
 
                       Radius: 3,959 mi
@@ -58,8 +63,8 @@
         </a-entity>
         <!--moon text!-->
         <a-entity id="moonText" visible="false">
-          <a-entity position="1 1.5 -5" bmfont-text="text: Moon; color:#fff;" scale="3 3 3"></a-entity>
-          <a-entity position="1 -1.0 -5"
+          <a-entity position="1 1.5 -5" rotation="0 -25 0" bmfont-text="text: Moon; color:#fff;" scale="3 3 3"></a-entity>
+          <a-entity position="1 -1.0 -5" rotation="0 -25 0"
           bmfont-text="text: The Moon is Earth's only permanent natural satellite. It is the fifth-largest natural satellite in the Solar System.
 
                       Radius: 1,079 mi
